@@ -1,0 +1,19 @@
+CREATE TABLE Psychologists (
+    PsychologistID INT PRIMARY KEY,
+    PsychologistName VARCHAR(100)
+);
+CREATE TABLE Patients (
+    PatientID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Age INT,
+    Gender VARCHAR(10),
+    PsychologistID INT,
+     FOREIGN KEY (PsychologistID) REFERENCES Psychologists(PsychologistID)
+);
+ALTER TABLE Patients DROP FOREIGN KEY Psychologists;
+ALTER TABLE Patients DROP PRIMARY KEY;
+ALTER TABLE Patients ADD PRIMARY KEY (PatientID);
+ALTER TABLE Patients ADD PRIMARY KEY (PatientID, AppointmentDate);
+ALTER TABLE Patients ADD FOREIGN KEY (PsychologistID) REFERENCES Psychologists(PsychologistID);
+
+
